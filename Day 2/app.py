@@ -8,14 +8,14 @@ def get_passwords():
             p = p.split()
             p[1] = p[1].rstrip(":")
             p[0] = p[0].split("-")
-            dic = {"least": int(p[0][0]), "most": int(p[0][1]), "key": p[1], "password": p[2]}
+            dic = {"bottom": int(p[0][0]), "top": int(p[0][1]), "key": p[1], "password": p[2]}
             new.append(dic)
         return new
     except:
         return []
 
-def is_valid(least, most, count):
-    return least <= count and count <=most
+def is_valid(bottom, top, count):
+    return bottom <= count and count <= top
 
 passwords = get_passwords()
 
@@ -27,7 +27,7 @@ for p in passwords:
         if char == p["key"]:
             c = c + 1
 
-    if(is_valid(p["least"], p["most"], c)):
+    if(is_valid(p["bottom"], p["top"], c)):
         valid = valid + 1
 
 print(valid)
@@ -36,9 +36,10 @@ valid_two = 0
 
 for p in passwords:
     # print(p["password"] + " | " + p["password"][0])
-    first_post = p["password"][p["least"]-1] == p["key"]
-    second_pos =  p["password"][p["most"]-1] == p["key"]
-    if (first_post != second_pos):
+    bottom_pos = p["password"][p["bottom"]-1] == p["key"]
+    top_pos =  p["password"][p["top"]-1] == p["key"]
+    if (bottom_pos != top_pos):
+        print(("Key: {} - Bottom index: {} - Top Index: {} for character: {}").format(p["password"], p["bottom"], p["top"], p["key"]))
         valid_two = valid_two + 1
 
 print(valid_two)
