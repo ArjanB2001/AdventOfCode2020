@@ -15,16 +15,12 @@ def slope_calc(x, y):
     trees = get_map()
     count = 0
     number_of_rows = len(trees)
-    current_number_of_columns = len(trees[0])
+    row_length = len(trees[0])
     current_y = 0
     current_x = 0
 
     while current_y < number_of_rows:
-        if(current_x >= current_number_of_columns):
-            trees = extend_map(trees)
-            current_number_of_columns = len(trees[0])
-
-        if(trees[current_y][current_x] == "#"):
+        if(trees[current_y][current_x % row_length] == "#"):
             count += 1
 
         current_y += y
@@ -34,13 +30,6 @@ def slope_calc(x, y):
 
 def part_one():
     return slope_calc(3, 1) 
-
-def extend_map(map):
-    new = []
-    for t in map:
-        new.append(t + t)
-
-    return new
 
 def part_two():
     return slope_calc(1,1) * slope_calc(3,1) * slope_calc(5,1) * slope_calc(7,1) * slope_calc(1,2)
