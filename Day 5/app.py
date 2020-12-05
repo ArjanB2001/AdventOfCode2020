@@ -54,7 +54,7 @@ def part_one():
 
     return highest
 
-print(part_one())
+# print(part_one())
 
 def part_two():
     passes = get_data()
@@ -111,4 +111,41 @@ def part_two():
             pre = i
     return my
 
-print(part_two())
+# print(part_two())
+
+def input_to_id(s):
+    row = s[:7]
+    col = s[7:10]
+    row = int(row.replace("B", "1").replace("F", "0"), 2)
+    col = int(col.replace("R", "1").replace("L", "0"), 2)
+    id = (row * 8) + col
+    return id
+
+def part_one_V2():
+    passes = get_data()
+    ids = [input_to_id(p) for p in passes]
+    return max(ids)
+    
+
+def part_two_V2():
+    passes = get_data()
+    ids = [input_to_id(p) for p in passes]
+
+    ids.sort()
+
+    pre = ids[0] - 1
+    my = 0
+    for i in ids:
+        if i == pre + 1:
+            pre = i
+        else:
+            my = i - 1
+            pre = i
+    return my
+
+# print(part_one_V2())
+
+
+#one-liner part one:
+print(max([(int(s[:7].replace("B", "1").replace("F", "0"), 2) * 8) + int(s[7:10].replace("R", "1").replace("L", "0"), 2) for s in [line.rstrip() for line in open("passes.txt", "r")]]))
+print(part_two_V2())
