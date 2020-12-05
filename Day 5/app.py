@@ -1,6 +1,6 @@
 def get_data():
     try:
-        file = open("passes.txt", "r")
+        file = open("Day 5/passes.txt", "r")
         n = [line.rstrip() for line in file]
         file.close()
         return n
@@ -147,5 +147,5 @@ def part_two_V2():
 
 
 #one-liner part one:
-print(max([(int(s[:7].replace("B", "1").replace("F", "0"), 2) * 8) + int(s[7:10].replace("R", "1").replace("L", "0"), 2) for s in [line.rstrip() for line in open("passes.txt", "r")]]))
+print(max([(int(s[:7].replace("B", "1").replace("F", "0"), 2) * 8) + int(s[7:10].replace("R", "1").replace("L", "0"), 2) for s in [line.rstrip() for line in open("Day 5/passes.txt", "r")]]))
 print(part_two_V2())
