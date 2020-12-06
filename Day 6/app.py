@@ -39,19 +39,9 @@ def part_two():
     
     for group in data:
         common = [letter for letter in group[0]] 
-        remove = [] 
-
         
         for person in group:
-
-            for c in common:
-                if c not in person:
-                    remove.append(c)
-            
-            for r in remove:
-                common.remove(r)
-
-            remove = []
+            common = [c for c in common if c in person]
 
         global_count = global_count + len(common)
 
