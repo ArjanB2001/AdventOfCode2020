@@ -14,10 +14,8 @@ def part_one():
     acc = 0
     i = 0
     while True:
-        # print(data[i][0][0])
-        # print(data[i])
         if data[i][1] == 1:
-            # print("loop")
+            # loop
             break
         elif data[i][0][0] == "nop":
             data[i][1] = 1
@@ -61,7 +59,7 @@ def get_acc(data):
         if i == len(d):
             return acc
         elif d[i][1] == 1:
-            # print("loop")
+            # loop
             print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
             break
         elif d[i][0][0] == "nop":
@@ -95,10 +93,7 @@ def part_two():
         elif data[i][0][0] == "jmp":
             c = copy.deepcopy(data)
             c[i][0][0] = "nop"
-            # print(c)
-            # print(data)
             if terminates(c):
-                # print("hey")
                 acc = get_acc(c)
                 return acc
             else:
