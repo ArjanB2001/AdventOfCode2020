@@ -57,7 +57,6 @@ def part_two():
     ship_y = 0
     w_x = 10
     w_y = 1
-    o = 90
     for ins in data:
         # print(w_x)
         # print(w_y)
